@@ -99,33 +99,89 @@ all_wars_matrix <- rbind (star_wars_matrix, star_wars_matrix2)
 
 ## The total box office revenue for the entire saga
 ```R
+# all_wars_matrix is available in your workspace
+all_wars_matrix
 
+# Total revenue for US and non-US
+total_revenue_vector <- colSums (all_wars_matrix)
+  
+# Print out total_revenue_vector
+total_revenue_vector
 ```
 Output
 ```{bash}
-
+    US non-US 
+2226.3 2087.8
 ```
+
 ## Selection of matrix elements
 ```R
+# all_wars_matrix is available in your workspace
+all_wars_matrix
 
+# Select the non-US revenue for all movies
+non_us_all <- all_wars_matrix[,2]
+  
+# Average non-US revenue
+mean(non_us_all)
+  
+# Select the non-US revenue for first two movies
+non_us_some <- all_wars_matrix[1:2,2]
+  
+# Average non-US revenue for first two movies
+mean (non_us_some)
+
+all_wars_matrix
 ```
 Output
 ```{bash}
-
+                           US non-US
+A New Hope              461.0  314.4
+The Empire Strikes Back 290.5  247.9
+Return of the Jedi      309.3  165.8
+The Phantom Menace      474.5  552.5
+Attack of the Clones    310.7  338.7
+Revenge of the Sith     380.3  468.5
 ```
+
 ## A little arithmetic with matrices
 ```R
+# all_wars_matrix is available in your workspace
+all_wars_matrix
 
+# Estimate the visitors
+visitors <- all_wars_matrix/5
+  
+# Print the estimate to the console
+visitors
 ```
 Output
 ```{bash}
-
+                           US non-US
+A New Hope              92.20  62.88
+The Empire Strikes Back 58.10  49.58
+Return of the Jedi      61.86  33.16
+The Phantom Menace      94.90 110.50
+Attack of the Clones    62.14  67.74
+Revenge of the Sith     76.06  93.70
 ```
+
 ## A little arithmetic with matrices (2)
 ```R
+# all_wars_matrix and ticket_prices_matrix are available in your workspace
+all_wars_matrix
+ticket_prices_matrix
 
+# Estimated number of visitors
+visitors <- all_wars_matrix / ticket_prices_matrix
+
+# US visitors
+us_visitors <- visitors[,1]
+
+# Average number of US visitors
+mean(us_visitors)
 ```
 Output
 ```{bash}
-
+[1] 75.01401
 ```
