@@ -1,9 +1,11 @@
 # Vectors
+
 ## Create a vector
 ```R
 # Define the variable vegas
 vegas <- "Go!"
 ```
+
 ## Create a vector (2)
 ```R
 numeric_vector <- c(1, 10, 49)
@@ -12,6 +14,7 @@ character_vector <- c("a", "b", "c")
 # Complete the code for boolean_vector
 boolean_vector <- c(TRUE, FALSE, TRUE)
 ```
+
 ## Create a vector (3)
 ```R
 # Poker winnings from Monday to Friday
@@ -20,6 +23,7 @@ poker_vector <- c(140, -50, 20, -120, 240)
 # Roulette winnings from Monday to Friday
 roulette_vector <-  c(-24, -50, 100, -350, 10)
 ```
+
 ## Naming a vector
 ```R
 # Poker winnings from Monday to Friday
@@ -34,6 +38,7 @@ names(poker_vector) <- c("Monday", "Tuesday", "Wednesday", "Thursday", "Friday")
 # Assign days as names of roulette_vectors
 names(roulette_vector) <- c("Monday", "Tuesday", "Wednesday", "Thursday", "Friday")
 ```
+
 ## Naming a vector (2)
 ```R
 # Poker winnings from Monday to Friday
@@ -49,7 +54,8 @@ days_vector <- c("Monday", "Tuesday", "Wednesday", "Thursday", "Friday")
 names(poker_vector) <-   days_vector
 names(roulette_vector) <- days_vector
 ```
-## Calculating total winnings (1)
+
+## Calculating total winnings
 ```R
 A_vector <- c(1, 2, 3)
 B_vector <- c(4, 5, 6)
@@ -60,6 +66,11 @@ total_vector <- A_vector + B_vector
 # Print out total_vector
 total_vector
 ```
+Output
+```{bash}
+[1] 5 7 9
+```
+
 ## Calculating total winnings (2)
 ```R
 # Poker and roulette winnings from Monday to Friday:
@@ -72,6 +83,7 @@ names(roulette_vector) <- days_vector
 # Assign to total_daily how much you won/lost on each day
 total_daily <- roulette_vector + poker_vector
 ```
+
 ## Calculating total winnings (3)
 ```R
 # Poker and roulette winnings from Monday to Friday:
@@ -93,6 +105,11 @@ total_week <- total_poker + total_roulette
 # Print out total_week
   total_week
 ```
+Output
+```{bash}
+[1] -84
+```
+
 ## Comparing total winnings
 ```R
 # Poker and roulette winnings from Monday to Friday:
@@ -108,4 +125,103 @@ total_roulette <- sum(roulette_vector)
 
 # Check if you realized higher total gains in poker than in roulette 
 total_poker > total_roulette
+```
+Output
+```{bash}
+[1] TRUE
+```
+
+## Vector selection: the good times 
+```R
+# Poker and roulette winnings from Monday to Friday:
+poker_vector <- c(140, -50, 20, -120, 240)
+roulette_vector <- c(-24, -50, 100, -350, 10)
+days_vector <- c("Monday", "Tuesday", "Wednesday", "Thursday", "Friday")
+names(poker_vector) <- days_vector
+names(roulette_vector) <- days_vector
+
+# Define a new variable based on a selection
+poker_wednesday <- poker_vector["Wednesday"]
+```
+
+## Vector selection: the good times (2)
+```R
+# Poker and roulette winnings from Monday to Friday:
+poker_vector <- c(140, -50, 20, -120, 240)
+roulette_vector <- c(-24, -50, 100, -350, 10)
+days_vector <- c("Monday", "Tuesday", "Wednesday", "Thursday", "Friday")
+names(poker_vector) <- days_vector
+names(roulette_vector) <- days_vector
+
+# Define a new variable based on a selection
+poker_midweek <- poker_vector[c("Tuesday", "Wednesday", "Thursday")]
+```
+
+## Vector selection: the good times (3)
+```R
+# Poker and roulette winnings from Monday to Friday:
+poker_vector <- c(140, -50, 20, -120, 240)
+roulette_vector <- c(-24, -50, 100, -350, 10)
+days_vector <- c("Monday", "Tuesday", "Wednesday", "Thursday", "Friday")
+names(poker_vector) <- days_vector
+names(roulette_vector) <- days_vector
+
+# Define a new variable based on a selection
+roulette_selection_vector <- roulette_vector [2:5]
+```
+
+## Vector selection: the good times (4)
+```R
+# Poker and roulette winnings from Monday to Friday:
+poker_vector <- c(140, -50, 20, -120, 240)
+roulette_vector <- c(-24, -50, 100, -350, 10)
+days_vector <- c("Monday", "Tuesday", "Wednesday", "Thursday", "Friday")
+names(poker_vector) <- days_vector
+names(roulette_vector) <- days_vector
+
+# Select poker results for Monday, Tuesday and Wednesday
+poker_start <- poker_vector[c("Monday", "Tuesday", "Wednesday")]
+  
+# Calculate the average of the elements in poker_start
+mean(poker_start)
+```
+Output
+```{bash}
+[1] 36.66667
+```
+
+## Selection by comparison - Step 1
+```R
+# Poker and roulette winnings from Monday to Friday:
+poker_vector <- c(140, -50, 20, -120, 240)
+roulette_vector <- c(-24, -50, 100, -350, 10)
+days_vector <- c("Monday", "Tuesday", "Wednesday", "Thursday", "Friday")
+names(poker_vector) <- days_vector
+names(roulette_vector) <- days_vector
+
+# Which days did you make money on poker?
+selection_vector <- c(140, -50, 20, -120, 240) > 0
+  
+# Print out selection_vector
+selection_vector
+```
+Output
+```{bash}
+[1]  TRUE FALSE  TRUE FALSE  TRUE
+```
+
+## Selection by comparison - Step 2
+```R
+# Poker and roulette winnings from Monday to Friday:
+poker_vector <- c(140, -50, 20, -120, 240)
+roulette_vector <- c(-24, -50, 100, -350, 10)
+days_vector <- c("Monday", "Tuesday", "Wednesday", "Thursday", "Friday")
+names(poker_vector) <- days_vector
+names(roulette_vector) <- days_vector
+
+# Which days did you make money on poker?
+selection_vector <- poker_vector > 0
+
+# Select from poker_vector these days
+poker_winning_days <- poker_vector[selection_vector]
 ```
